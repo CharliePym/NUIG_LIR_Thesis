@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>CaseSearchIreland - AI Powered Legal Research</title>
+
+  <!-- Bootstrap Core CSS-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <style>
+    header {
+      position: relative;
+      width: 100%;
+      background-color: rgb(36, 36, 36)
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: auto;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    input {
+      margin: 10px;
+    }
+
+    footer {
+      position: relative;
+      width: 100%;
+      background-color: rgb(36, 36, 36)
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark rel-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{%  url 'home' %}"> <span
+            style="color: rgb(53, 132, 70)">CaseSearchIreland</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{%  url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/search">Search</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- main -->
+  <main role="main" class="container">
+    <p style="margin-bottom: 2rem;white-space:pre-line;">{{ judgment.judgment }}</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto text-white fixed-bottom">
+    <div class="container">
+      <ul class="nav justify-content-center border-bottom pb-1 mb-1 text-white">
+        <li class="nav-item"><a href="{%  url 'home' %}" class="nav-link px-2 text-white">Home</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
+      </ul>
+      <p class="text-center">&copy; 2023 Charlotte Pym, University of Galway</p>
+    </div>
+  </footer>
+
+</html>

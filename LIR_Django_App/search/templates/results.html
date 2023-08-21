@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>CaseSearchIreland - AI Powered Legal Research</title>
+
+  <!-- Bootstrap Core CSS-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <style>
+    header {
+      position: relative;
+      width: 100%;
+      background-color: rgb(36, 36, 36)
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin-top: auto;
+      margin-bottom: auto;
+
+    }
+
+    main {
+      height: calc(100vh - 50px);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      position: relative;
+      margin-top: 100;
+      margin: auto;
+    }
+
+    th {
+      padding-left: 15px;
+    }
+
+    td {
+      padding-left: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 700px;
+    }
+
+    .rows:nth-child(odd) {
+      background-color: #d6eede;
+    }
+
+    .judgment_by {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+
+    }
+
+    .judgment_title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .title {
+      text-align: center;
+      font-family: verdana;
+    }
+
+    footer {
+      position: relative;
+      width: 100%;
+      background-color: rgb(36, 36, 36)
+    }
+  </style>
+</head>
+
+
+<!-- Header -->
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark rel-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{%  url 'home' %}"> <span
+          style="color: rgb(53, 132, 70)">CaseSearchIreland</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{%  url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- main -->
+<main>
+  <div>
+    {% block content %}
+    <br>
+    <h1 class="title"><u>Top Judgments </u></h1>
+    </li>
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <!-- define column headings -->
+          <th>Judgment Title</th>
+          <th>Similarity</th>
+          <th>Citation</th>
+          <th>Court</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Judge</th>
+          <th>Judgment Link</th>
+          <th>Plain Text Link </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <!-- loop over judgments dict -->
+        {% for judgment, judgment_score in top_judgments.items %}
+        <tr class="rows">
+          <td class="judgment_title"> <b>{{ judgment.judgment_title }}<b></td>
+          <td> {{ judgment_score.similarity }}</td>
+          <td> {{ judgment.neutral_citation }}</td>
+          <td> {{ judgment.court_name }} </td>
+          <td> {{ judgment.judgment_date}}</td>
+          <td> {{ judgment.judgment_status }}</td>
+          <td class="judgment_by"> {{ judgment.judgment_by }}</td>
+          <td> <a href="{{ judgment.judgment_url }}"> Link </a></td>
+          <td><a href="{% url 'judgment' judgment_id=judgment.judgment_id%}">Link</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><br>
+  </div>
+  {% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="footer mt-auto text-white">
+  <div class="container">
+    <ul class="nav justify-content-center border-bottom pb-1 mb-1 text-white">
+      <li class="nav-item"><a href="{%  url 'home' %}" class="nav-link px-2 text-white">Home</a></li>
+      <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
+    </ul>
+    <p class="text-center">&copy; 2023 Charlotte Pym, University of Galway</p>
+  </div>
+</footer>
+
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>CaseSearchIreland - AI Powered Legal Research</title>
+
+  <!-- Bootstrap Core CSS-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <style>
+    .main_text {
+      max-width: 85%;
+      margin: 0 auto;
+      align-items: center;
+      right: 50%;
+      bottom: 50%;
+      transform: translate(50%, 50%);
+      position: absolute;
+    }
+
+    header {
+      background-color: rgb(36, 36, 36)
+    }
+
+    footer {
+      background-color: rgb(36, 36, 36)
+    }
+  </style>
+
+</head>
+
+<!-- Header -->
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark rel-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{%  url 'home' %}"> <span
+          style="color: rgb(53, 132, 70)">CaseSearchIreland</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{%  url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- main -->
+<main>
+
+  <body>
+    <div class="main_text">
+      <h1>Ooops!</h1>
+      <h2>This is not the page you are looking for!</h2>
+    </div>
+  </body>
+</main>
+
+<!-- Footer -->
+<footer class="footer mt-auto text-white fixed-bottom">
+  <div class="container">
+    <ul class="nav justify-content-center border-bottom pb-1 mb-1 text-white">
+      <li class="nav-item"><a href="{%  url 'home' %}" class="nav-link px-2 text-white">Home</a></li>
+      <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
+    </ul>
+    <p class="text-center">&copy; 2023 Charlotte Pym, University of Galway</p>
+  </div>
+</footer>
+
+</html>
